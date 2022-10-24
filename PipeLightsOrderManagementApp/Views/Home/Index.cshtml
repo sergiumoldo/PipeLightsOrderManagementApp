@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - fromInputToDataase</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/fromInputToDataase.styles.css" asp-append-version="true" />
+
+    <style>
+        body{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .hov {
+        background-color:#212529; 
+                        color: #fff;
+                        text-transform: uppercase;
+                        font-size: 1rem;
+                        height: 32px;
+                        line-height: 32px;
+                        padding: 0px 24px 5px 24px;
+                        border-radius: 7px !important;
+                        transition: .4s ease-in-out;
+                        letter-spacing: 2px;
+                        margin-top:20px;
+                        margin-bottom:20px;
+    }
+
+    .hov:hover {
+        background-color:#F0B250; 
+                        color:black;
+                        text-transform: uppercase;
+                        font-size: 1rem;
+                        height: 32px;
+                        line-height: 32px;
+                        padding: 0px 24px 5px 24px;
+                        border-radius: 7px !important;
+                        transition: .4s ease-in-out;
+                        letter-spacing: 2px;
+                        margin-top:20px;
+                        margin-bottom:20px;
+    }
+    </style>
+</head>
+
+<body>
+    <form action=~/Home/NewOrder >
+         <button class="btn btn-lg btn-success mx-2">Introdu o noua comanda</button>
+    </form>
+    <form action=~/Order/ShowAllOrders>
+         <button class="btn btn-lg btn-warning mx-2">Vezi toate comenzile</button>
+    </form>
+   
+<!-- Modal -->
+<div style="z-index:9999999!important" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div style="text-align:center; color:#212529" class="modal-header">
+        <div style="margin-left:45%" class="modal-title px-0" id="exampleModalCenterTitle">
+            <br />
+            <svg style="color:#F0B250" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-envelope-check" viewBox="0 0 16 16">
+              <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"/>
+              <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686Z"/>
+            </svg>
+             <br />
+        </div>
+      </div>
+      <h5 style="text-align:center; color:#212529" class="modal-body">
+        Comanda @ViewBag.OrderNumber a fost introdusa in baza de date
+      </h5>
+      <div style="display:felx; justify-content:center; align-items:center" class="modal-footer">
+          <br />
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        <br />
+     
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="~/js"></script>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+    $(document).ready(function ()
+    {
+        if ('@TempData["value"]' != "" || '@TempData["value"]' != null)
+        {
+            if ('@TempData["value"]' == "OK")
+            {
+                $("#exampleModalCenter").modal('show');
+            }
+            else {
+                $("#exampleModalCenter").modal('hide');
+            }
+        }
+    });
+</script>
+
+</body>
