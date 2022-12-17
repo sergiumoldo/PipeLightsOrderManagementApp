@@ -22,7 +22,8 @@
 </head>
 <body>
 <p>
-    <a href="~/Home/NewOrder">Introdu o noua comanda</a>
+    <a class="btn btn-warning" href="~/Home/NewOrder">Introdu o noua comanda</a>
+    <a class="btn btn-success" href="~/Order/ShowAllOrders">Introdu o noua comanda</a>
 </p>
 
 <br />
@@ -55,6 +56,10 @@
     </form>
 </div>
 
+<div style="display:flex; justify-content:space-around; align-items:center" class="container-xxxl bg-light p-3">
+    <div>Numar comenzi gasite: @ViewBag.SearchedNumber</div>
+
+</div>
 <br />
 <br />
 <table style="width:100%; font-size:20px" class="table">
@@ -62,13 +67,13 @@
         <tr>
             
             <th>
-                Numar Comanda
+                Comanda
             </th>
             <th>
                 Nume
             </th>
             <th>
-                Prenume
+                Sex
             </th>
             
             <th>
@@ -82,9 +87,11 @@
                Data Plasare
             </th>
             <th>
-                Data Livrare
+                Canal
             </th>
-            
+            <th>
+                Judet
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -110,10 +117,13 @@
             </td>
            
             <td>
-                @Html.DisplayFor(modelItem => item.DeliveryDate)
+                 <time> @item.OrderDate.ToString("dd-MM-yyyy")</time>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
+                @Html.DisplayFor(modelItem => item.Channel)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.Characteristics)
             </td>
 
             <td>

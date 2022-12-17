@@ -23,6 +23,8 @@ namespace PipeLightsOrderManagementApp.Controllers
             var operationRepository = new OperationRepository();
             List<OrderDto> searchList = operationRepository.Search(model);
 
+            ViewBag.SearchedNumber = searchList.Count();
+
             return View(searchList);
             
         }

@@ -22,7 +22,7 @@
 </head>
 <body>
 <p>
-    <a href="~/Home/NewOrder">Introdu o noua comanda</a>
+    <a class="btn btn-warning" href="~/Home/NewOrder">Introdu o noua comanda</a>
 </p>
 
 <br />
@@ -54,6 +54,39 @@
         <button type="submit" class="btn btn-success">Sorteaza</button>
     </form>
 </div>
+<br />
+
+    @*informations*@
+<div style="display:flex; justify-content:space-around; align-items:center" class="container-xxxl bg-light p-3">
+    <div>Numar comenzi: @ViewBag.OrdersNumber</div>
+    <div>
+        <div>
+            <div>Masculin: @ViewBag.GenderM (@ViewBag.MalePercent %)</div>
+        </div>
+        <div>
+            <div>Feminin: @ViewBag.GenderF (@ViewBag.FemalePercent %)</div>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <div>Website: @ViewBag.website (@ViewBag.WebsitePercent %)</div>
+        </div>
+        <div>
+            <div>Instagram: @ViewBag.Instagram (@ViewBag.InstagramPercent %)</div>
+        </div>
+        <div>
+            <div>Facebook: @ViewBag.Facebook (@ViewBag.FacebookPercent %)</div> 
+        </div>
+        <div>
+            <div>Telefon: @ViewBag.Telefon (@ViewBag.TelefonPercent %)</div>
+        </div>
+        <div>
+            <div>Targ: @ViewBag.Targ (@ViewBag.TargPercent %)</div>
+        </div>
+    </div>
+    
+</div>
 
 <br />
 <br />
@@ -62,13 +95,13 @@
         <tr>
             
             <th>
-                Numar Comanda
+                Comanda
             </th>
             <th>
                 Nume
             </th>
             <th>
-                Prenume
+                Sex
             </th>
             
             <th>
@@ -82,7 +115,10 @@
                Data Plasare
             </th>
             <th>
-                Data Livrare
+               Canal
+            </th>
+            <th>
+               Judet
             </th>
             
             <th></th>
@@ -110,10 +146,14 @@
             </td>
            
             <td>
-                @Html.DisplayFor(modelItem => item.DeliveryDate)
+                <time> @item.OrderDate.ToString("dd-MM-yyyy")</time>
+               
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
+                @Html.DisplayFor(modelItem => item.Channel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Characteristics)
             </td>
 
             <td>

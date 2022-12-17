@@ -38,6 +38,80 @@ namespace PipeLightsOrderManagementApp.Controllers
             var orderRepositories = new OrderRepositories();
             List<OrderDto> order = orderRepositories.GetAll();
 
+            decimal allOrders = order.Count();
+            ViewBag.OrdersNumber = allOrders;
+
+            decimal male = 0;
+            decimal female = 0;
+
+            decimal website = 0;
+            decimal instagram = 0;
+            decimal facebook = 0;
+            decimal telefon = 0;
+            decimal targ = 0;
+
+            foreach (var orderItem in order)
+            {
+                if (orderItem.LastName == "M")
+                {
+                    male++;
+                    decimal malePercent = (male / allOrders) * 100;
+
+                    ViewBag.GenderM = male;
+                    ViewBag.MalePercent = malePercent.ToString("#.#");
+                }
+                else
+                {
+                    female++;
+                    decimal femalePercent = (female / allOrders) * 100;
+
+                    ViewBag.GenderF = female;
+                    ViewBag.FemalePercent = femalePercent.ToString("#.#");
+                }
+           
+
+                if (orderItem.Channel == "Website")
+                {
+                    website++;
+                    decimal websitePercent = (website / allOrders) * 100;
+
+                    ViewBag.Website = website;
+                    ViewBag.WebsitePercent = websitePercent.ToString("#.#");
+                }
+                else if (orderItem.Channel == "Instagram")
+                {
+                    instagram++;
+                    decimal instagramPercent = (instagram / allOrders) * 100;
+
+                    ViewBag.Instagram = instagram;
+                    ViewBag.InstagramPercent = instagramPercent.ToString("#.#");
+                }
+                else if (orderItem.Channel == "Facebook")
+                {
+                    facebook++;
+                    decimal facebookPercent = (facebook / allOrders) * 100;
+
+                    ViewBag.Facebook = facebook;
+                    ViewBag.FacebookPercent = facebookPercent.ToString("#.#");
+                }
+                else if (orderItem.Channel == "Telefon")
+                {
+                    telefon++;
+                    decimal telefonPercent = (telefon / allOrders) * 100;
+
+                    ViewBag.Telefon = telefon;
+                    ViewBag.TelefonPercent = telefonPercent.ToString("#.#");
+                }
+                else if (orderItem.Channel == "Targ")
+                {
+                    targ++;
+                    decimal targPercent = (targ / allOrders) * 100;
+
+                    ViewBag.Targ = targ;
+                    ViewBag.TargPercent = targPercent.ToString("#.#");
+                }
+            }
+
             return View(order);
         }
 

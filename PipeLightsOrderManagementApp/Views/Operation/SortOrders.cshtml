@@ -22,7 +22,8 @@
 </head>
 <body>
 <p>
-    <a href="~/Home/NewOrder">Introdu o noua comanda</a>
+    <a class="btn btn-warning" href="~/Home/NewOrder">Introdu o noua comanda</a>
+    <a class="btn btn-success" href="~/Order/ShowAllOrders">Introdu o noua comanda</a>
 </p>
 
 <br />
@@ -62,14 +63,14 @@
     <thead>
         <tr>
             
-            <th>
-                Numar Comanda
+             <th>
+                Comanda
             </th>
             <th>
                 Nume
             </th>
             <th>
-                Prenume
+                Sex
             </th>
             
             <th>
@@ -83,10 +84,11 @@
                Data Plasare
             </th>
             <th>
-                Data Livrare
+                Canal
             </th>
-            
-            <th></th>
+            <th>
+                Judet
+            </th>
         </tr>
     </thead>
     <tbody >
@@ -111,10 +113,13 @@
             </td>
            
             <td>
-                @Html.DisplayFor(modelItem => item.DeliveryDate)
+                 <time> @item.OrderDate.ToString("dd-MM-yyyy")</time>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
+                @Html.DisplayFor(modelItem => item.Channel)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.Characteristics)
             </td>
 
             <td>
